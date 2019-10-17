@@ -13,7 +13,7 @@ git init
 git submodule add https://github.com/Laradock/laradock.git
 ```
 
-### 環境ファイルコピー＆変数
+### 設定ファイルコピー
 
 ```
 cd laradock
@@ -37,17 +37,15 @@ vi ./mysql/my.cnf
 default-authentication-plugin = mysql_native_password
 ```
 
-※　すごい時間がかかる
-
 ### Docker を起動
+
+※　初回起動はすごい時間がかかる
 
 ※　Laradocを様々なimageを含むため、起動する分だけをComposeUpする
 
 ```
 docker-compose up -d nginx mysql phpmyadmin
 ```
-
-※　すごい時間がかかる
 
 ### Dockerコンテナに入る
 
@@ -66,10 +64,6 @@ composer create-project --prefer-dist laravel/laravel ./
 ```
  php artisan --version
 ```
-
-### PHPMyAdminを実行
-
-http://localhost:8080
 
 ### MySQLにログイン
 
@@ -115,13 +109,10 @@ php artisan migrate
 
 参考：https://liginc.co.jp/364089
 
+### Dockerリセット
 
-
-
-
-Dockerリセット
-
+```
 docker system prune
-
 docker rmi $(docker images -q)
+```
 
