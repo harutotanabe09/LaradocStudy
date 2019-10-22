@@ -7,19 +7,27 @@ use App\Post;
 
 class PostsController extends Controller
 {
-    //
-    public function index(){
+    public function index() {
+      // useを使わない
+      // $posts = \App\Post::all();
+      // 全件取得
+      // $posts = Post::all();
+      // Orderbyを使った方法
+      // $posts = Post::orderBy('created_at', 'desc')->get();
+      $posts = Post::latest()->get();
+      // $posts = [];
+      // Dumpの設定
+      // dd($posts->toArray()); // dump die
+      // return view('posts.index', ['posts' => $posts]);
+      return view('posts.index')->with('posts', $posts);
+    }
 
-        // use 使う前
-        // $post = \App\Post::all();
-        // use 使うあと
-        // $post = Post::all();
-        $post = Post::latest()->get(); // = $post = Post::orderBy('created_at', 'desc')->get();
-
-        // dump / die
-        dd($post->toArray());
-        // return "hello";
-        // viewを指定する
-        return view('posts.index');
+    // public function show($id) {
+    public function show(Post $post) {
+        // dd($post->toArray()); // dump die
+        // idを指定して検索する方法
+        // $post = Post::find($id);
+        // $post = Post::findOrFail($id);
+        return view('posts.show')->with('post', $post);
     }
 }

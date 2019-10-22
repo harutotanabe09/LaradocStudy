@@ -12,5 +12,5 @@
 */
 
 Route::get('/', 'PostsController@index');
-
-
+// Route::get('/posts/{id}', 'PostsController@show'); id指定
+Route::get('/posts/{post}', 'PostsController@show');

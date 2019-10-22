@@ -147,3 +147,16 @@ http://localhost/　でHelloが表示できる
 dd($post->toArray());
 ```
 
+■Bladeのコントローラー
+
+```
+      {{-- コメントアウト --}}
+```
+
+■Bladeから別コントローラーの変数の呼び出し方多数
+
+```
+<li><a href="{{ action('PostsController@show', $post) }}">{{ $post->title }}</a></li>
+→ PostsControllerのShowメソッドを呼び出す
+```
+
