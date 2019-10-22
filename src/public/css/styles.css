@@ -18,3 +18,19 @@ body {
   ul > li {
     margin-bottom: 5px;
   }
+  
+  .header-menu {
+    font-size: 12px;
+    font-weight: normal;
+    float: right;
+  }
+  
+  input[type="text"], textarea {
+    box-sizing: border-box;
+    width: 400px;
+    padding: 5px;
+  }
+  
+  textarea {
+    height: 120px;
+  }

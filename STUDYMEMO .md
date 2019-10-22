@@ -160,3 +160,17 @@ dd($post->toArray());
 → PostsControllerのShowメソッドを呼び出す
 ```
 
+■Bladeの共通パーツ化
+
+- @yield　変数
+-  @extends 共通部分のBladeの呼び出し
+-  @section　yieldに埋め込む変数の定義
+
+■Routingの注意点
+
+```php
+以下の場合、同じ解釈されるので注意
+Route::get('/posts/{post}', 'PostsController@show');
+Route::get('/posts/create', 'PostsController@create');
+```
+
