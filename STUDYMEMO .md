@@ -174,3 +174,65 @@ Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/posts/create', 'PostsController@create');
 ```
 
+■入力チェック
+
+validateメソッドで定義する
+
+保存前の値は、oldヘルパーで以下のように定義
+
+```php
+value="{{ old('title') }}"
+```
+
+■入力チェック
+
+PatchメソッドでPostを返すことができる
+
+```php
+  {{ method_field('patch') }}
+```
+
+■モデルとマイグレーション両方一変に作成する
+
+アーティサンコマンドで、コメントのモデルとマイングレーション作成
+
+```sh
+ docker-compose exec workspace bash
+ php artisan make:model Comment --migration
+```
+
+結果
+/database/migrationsにできる
+
+編集後以下実行。
+
+php artisan migrate
+
+### LaravelでリクエストをMakeする
+
+```
+php artisan make:request PostRequest
+```
+↓
+app/Http/Requestの中に作成される
+
+### リクエストに何書く
+
+リクエストは、コントローラーで行っていたバリデーションチェックを書く
+
+### JSの最近の傾向
+
+use strictを宣言する
+
+
+### FORMの送信方法
+
+以下の通りがある。actionでコントローラー指定。actionでURL指定
+
+```
+  <li><a class="edit" href="{{ action('PostsController@edit', $post) }}">[Edit]</a></li>
+   <form method="post" action="{{ url('/posts', $post->id) }}" id="form_{{ $post->id }}">
+
+```
+
+
